@@ -73,9 +73,9 @@
         - openjdk-8-jre-headless
       when: ansible_distribution_release | lower == 'trusty'
 
-    - name: Set default java to java-1.8.0-openjdk-amd64
-      command: update-java-alternatives -s java-1.8.0-openjdk-amd64
-      when: ansible_distribution_release | lower == 'trusty'
+#    - name: Set default java to java-1.8.0-openjdk-amd64
+#      command: update-java-alternatives -s java-1.8.0-openjdk-amd64
+#      when: ansible_distribution_release | lower == 'trusty'
 
     - name: Create Jenkins user
       user:
@@ -175,6 +175,6 @@
       retries: 5
       delay: 10
 
-    - name: Set default java back to java-1.7.0-openjdk-amd64
-      command: update-java-alternatives -s java-1.7.0-openjdk-amd64
-      when: ansible_distribution_release | lower == 'trusty'
+#    - name: Set default java back to java-1.7.0-openjdk-amd64
+#      command: update-java-alternatives -s java-1.7.0-openjdk-amd64
+#      when: ansible_distribution_release | lower == 'trusty'
