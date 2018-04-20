@@ -1,4 +1,31 @@
 - project:
+    name: "gh-rpc-openstack-master-premerge"
+    repo_name: "rpc-openstack"
+    repo_url: "https://github.com/rcbops/rpc-openstack"
+    series: "master"
+    branches:
+      - "master.*"
+    skip_pattern: |
+      \.md$
+      | \.rst$
+      | ^releasenotes/
+      | ^gating/generate_release_notes/
+      | ^gating/post_merge_test/
+      | ^gating/update_dependencies/
+    image:
+      - xenial_no_artifacts_gh:
+          IMAGE: "Ubuntu 16.04 LTS (Xenial Xerus) (PVHVM)"
+    scenario:
+      - ironic:
+          TRIGGER_PR_PHRASE_ONLY: true
+      - "swift"
+    action:
+      - deploy:
+          FLAVOR: "performance2-15"
+    jobs:
+      - 'PR_{repo_name}-{series}-{image}-{scenario}-{action}'
+
+- project:
     name: "rpc-openstack-master-premerge"
     repo_name: "rpc-openstack"
     repo_url: "https://github.com/rcbops/rpc-openstack"
