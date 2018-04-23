@@ -1,5 +1,5 @@
 - job:
-    name: Build-Gating-Venv
+    name: gh-test-1
     project-type: workflow
     concurrent: false
     properties:
@@ -7,7 +7,6 @@
       - build-discarder:
           days-to-keep: 7
     triggers:
-      - github # triggered post merge, not on PR
     parameters:
       - rpc_gating_params
     dsl: |
