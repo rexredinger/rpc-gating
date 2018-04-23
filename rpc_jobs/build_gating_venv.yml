@@ -94,8 +94,7 @@
                     tar cjfp \$archive .venv rpc-gating/playbooks/roles
 
                     REPO_PATH="/var/www/repo/rpcgating/venvs"
-                    echo "\${REPO_HOST} \$(cat \$REPO_HOST_PUBKEY)" >> ./.ssh/known_hosts
-                    SSH_OPTS="-o UserKnownHostsFile=./.ssh/known_hosts"
+                    SSH_OPTS="-o StrictHostKeyChecking=no"
                     ssh \${SSH_OPTS} \$REPO_USER@\$REPO_HOST "mkdir -p \$REPO_PATH"
 
                     # Upload generated version
