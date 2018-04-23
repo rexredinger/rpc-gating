@@ -30,7 +30,7 @@
               }
 
               withCredentials(artifact_build.get_rpc_repo_creds()) {
-                sshagent (credentials:['RPC_REPO_SSH_USER_PRIVATE_KEY_FILE']){
+                sshagent (credentials:['id_rsa_cloud10_jenkins']){
                   // Venv is built within docker, includes all the environment variables
                   container.inside{
                     sh """#!/bin/bash -xeu
